@@ -4,7 +4,7 @@ import xlrd
 
 
 #The excel sheet with stats needed
-loc = ("C:\\Users\\ethan\\Projects\\Excel\\NFL Win Inequality\\Super Bowl Era Best and Worst Teams.xlsx")
+loc = ("")
 
 
 #To open Workbook
