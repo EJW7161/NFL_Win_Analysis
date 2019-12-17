@@ -1,4 +1,4 @@
-#Call analysis() for final conclusions
+#Call final_analysis() for final conclusions
 
 import xlrd
 
