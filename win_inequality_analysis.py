@@ -4,7 +4,7 @@ import xlrd
 
 
 #The excel sheet with stats needed
-loc = ("")
+loc = ("C:\\Users\\ethan\\Projects\\Excel\\NFL Win Inequality\\Super Bowl Era Best and Worst Teams.xlsx")
 
 
 #To open Workbook
@@ -25,6 +25,9 @@ def reset():
     
     global year_col
     year_col = 0
+    
+    global mvp_col
+    mvp_col = 0
     
     global best_number_teams_col
     best_number_teams_col = 2
@@ -444,6 +447,7 @@ def worst_appearences():
         teams_and_appearences.append([team, appearences])
         
     return teams_and_appearences
+    print (teams_and_appearences)
     
 def best_appearences_per_team(team, all_best_teams):
     best_appearences = 0
@@ -466,6 +470,7 @@ def best_appearences():
     return teams_and_appearences
     
 def polarized_outliers():
+    reset()
     b_appearences = []
     w_appearences = []
     
@@ -507,8 +512,34 @@ def polarized_outliers():
     ' team in a given season is/are the ' + least_polarized_team + ' with ' +
     str(least_appearences))
     
+def get_mvp(year):
+    row = 3 * (year-1965)
+    if sheet.cell_value(row,mvp_col) == 'MVP':
+        mvp = True
+    else:
+        mvp = False
+    return mvp
+    
+def mvp_analysis():
+    reset()
+    global year
+    global current_year
+    mvp_counter = 0
+    while year < current_year:
+        row = 3 * (year-1965)
+        if sheet.cell_value(row,mvp_col) == 'MVP':
+            mvp_counter += 1
+        year += 1
+    
+    reset()
+    
+    print('The MVP is on the team with the best record in the NFL ' + 
+        'or the team tied for the best record in the NFL ' +
+        str(float(100*mvp_counter/(current_year-year))) + '% of the time')
+   
 def final_analysis():
     super_bowl_analysis()
+    mvp_analysis()
     percentage_inequality_retriever()
     win_inequality_retriever()
     polarized_outliers()
