@@ -3,8 +3,8 @@
 import xlrd
 
 
-#The excel sheet with stats needed
-loc = ("C:\\Users\\ethan\\Projects\\Excel\\NFL Win Inequality\\Super Bowl Era Best and Worst Teams.xlsx")
+#The excel sheet 'Super Bowl Era Best and Worst Teams' in the NFL_Win_Analysis repository with stats needed
+loc = ("")
 
 
 #To open Workbook
